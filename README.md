@@ -1,8 +1,8 @@
-# Ortadoğu Silah Tedarik Örüntülerinin Yapısal Analizi: Soğuk Savaş Sonrası Dönüşümün Kesintili Regresyon Tasarımı ile İncelenmesi
+# Ortadoğu Silah Tedarik Örüntülerinin Yapısal Analizi: Soğuk Savaş Sonrası Dönüşümün Kesintili Regresyon Modeli ile İncelenmesi
 
 Bu repo, Soğuk Savaş'ın sona ermesinin Ortadoğu silah tedarik örüntüleri üzerindeki etkilerini SIPRI Silah Transferleri Veritabanı (Arms Transfers Database) verileri üzerinden inceleyen çalışmanın replikasyon paketini içermektedir. Analiz, 1990 yılını dışsal bir kırılma noktası olarak ele alan kesintili regresyon tasarımı (Regression Discontinuity Design, RDD) çerçevesinde yürütülmüş; bulgular Newey-West HAC standart hataları ile raporlanmıştır.
 
-## Araştırma Sorusu
+## Sorunsal
 
 Çalışma, küresel sistemde tek kutupluluğa geçişin Ortadoğu silah pazarında nasıl bir yapısal dönüşüme yol açtığını altı farklı bağımlı değişken üzerinden test etmektedir: (i) ABD'nin tedarik anlaşmalarındaki payı, (ii) ABD'nin gerçekleşen tedarikteki payı (TIV bazlı), (iii) SSCB/Rusya'nın tedarikteki payı, (iv) iki süper gücün birleşik payı, (v) alıcı ülke başına ortalama tedarikçi sayısı ve (vi) bölge içi tedariğin oranı.
 
@@ -53,13 +53,13 @@ julia Script.jl
 
 Betik tüm RDD tahminlerini çalıştırır, anlamlılık testlerini raporlar ve grafiklerin PDF çıktılarını üretir. Tüm yorum satırları Türkçedir ve her bölüm hangi bağımlı değişkene karşılık geldiğini açıkça belirtir.
 
-## Metodoloji Özeti
+## Metodoloji
 
 Her bağımlı değişken için aşağıdaki RDD spesifikasyonu tahmin edilmiştir:
 
 $$Y_i = \beta_0 + \beta_1 D_i + \beta_2 (\text{Yıl}_i - 1990) + \beta_3 D_i (\text{Yıl}_i - 1990) + \varepsilon_i$$
 
-Burada $D_i$ Soğuk Savaş sonrası kukla değişkenidir (yıl ≥ 1990 ise 1). $\beta_1$ eşik anındaki seviye sıçramasını, $\beta_3$ ise eğim kırılmasını yakalar. Standart hatalar Newey-West (Bartlett çekirdeği) HAC tahmincisi ile hesaplanmıştır. RDD tahminlerinin yanı sıra LOESS düzgünleştirme eğrileri (span parametreleri seriye göre 0.5–0.825 arasında) doğrusal-olmayan trendlerin görsel kontrolü için tahmin edilmiştir.
+Burada $D_i$ Soğuk Savaş sonrası kukla (dummy) değişkenidir (yıl ≥ 1990 ise 1). $\beta_1$ eşik anındaki seviye sıçramasını, $\beta_3$ ise eğim kırılmasını yakalar. Standart hatalar Newey-West (Bartlett çekirdeği) HAC tahmincisi ile hesaplanmıştır. RDD tahminlerinin yanı sıra LOESS düzgünleştirme eğrileri (span parametreleri seriye göre 0.5–0.825 arasında) doğrusal-olmayan trendlerin görsel kontrolü için tahmin edilmiştir.
 
 ## Atıf
 
